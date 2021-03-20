@@ -1,14 +1,19 @@
 import '../styles/App.css';
-import Login from './Login';
-import { Container } from 'react-bootstrap';
+import LoginL from './LoginLayout';
+import SignupL from './SignupLayout';
+import PageNotFound from './PageNotFound';
+
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 function App() {
   return (
-    <Container className="d-flex justify-content-center align-items-center " style={{ height: '100vh' }}>
-      <div className="w-100" style={{ maxWidth: "400px" }}>
-        <Login />
-      </div>
-    </Container>
+    <BrowserRouter>
+      <Switch>
+        <Route path="/login" component={LoginL} exact={true} />
+        <Route path="/" component={SignupL} exact={true} />
+        <Route component={PageNotFound} exact={true} />
+      </Switch>
+    </BrowserRouter>
   );
 }
 
